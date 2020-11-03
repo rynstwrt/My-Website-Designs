@@ -8,33 +8,21 @@
         <title>My Websites</title>
     </head>
     <body>
-        <div id='page'>
-            <h1>Ryan Stewart</h1>
-            <h2>Check Out My Websites</h2>
-            <div id='row-container'>
-                <div class='row'>
-                    <div class='square'>
-                        <h3>Main Website</h3>
-                        <div class='viewbox'>
-                            <a href='https://www.ryanstew.art'><img src='mainpage.png'></a>
-                        </div>
-                    </div>
-                    <div class='square'>
-                        <h3>CSS Animations</h3>
-                        <div class='viewbox'>
-                            <a href='https://rynstwrt.github.io/CSS-Animations/'><img src='cssanimations.png'></a>
-                        </div>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='square'>
-                        <h3>Chord Generator</h3>
-                        <div class='viewbox'>
-                            <a href='https://rynstwrt.github.io/ChordProgressionGenerator/'><img src='chordgenerator.png'></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div id='text-container'>
+            <h1>Ryan</h1>
+            <h1>Stewart</h1>
+            <h2>(check out my websites)</h2>
         </div>
+        <div id='page'>
+            <div id='pageheader'>
+                <h3 id='leftarrow'>&lt;</h3>
+                <h3 id='title'>CSS Animations</h3>
+                <h3 id='rightarrow'>&gt;</h3>
+            </div>
+
+            <div id='viewbox'><div id='overlay'></div></div>
+        </div>
+
+        <script src='scroller.js'></script>
     </body>
 </html>
