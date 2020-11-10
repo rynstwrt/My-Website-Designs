@@ -4,7 +4,7 @@ const rightArrow = document.querySelector('#rightarrow');
 const title = document.querySelector('#title');
 const viewbox = document.querySelector('#viewbox');
 let index = 0;
-let isInTransition = false;
+let inTransition = false;
 
 const dict =
 {
@@ -14,49 +14,58 @@ const dict =
 }
 const keys = Object.keys(dict);
 
-function viewboxClick(e)
-{
-    const titleText = title.textContent;
-    const url = dict[titleText][1];
-    window.open(url);
-}
-
 function setData()
 {
-    viewbox.removeEventListener('click', viewboxClick);
-
     index = (index >= 0) ? index : keys.length - 1;
     const titleText = keys[index % keys.length];
-
     title.textContent = titleText;
-
-    viewbox.style.backgroundImage = `url(${dict[titleText][0]})`;
-
-    viewbox.addEventListener('click', viewboxClick);
 }
 
-transitionEndEvents.forEach((v) =>
+viewbox.addEventListener('click', () =>
 {
-    viewbox.addEventListener(v, () =>
-    {
-        isInTransition = false;
-    });
+    index = (index >= 0) ? index : keys.length - 1;
+    const titleText = keys[index % keys.length];
+    const url = dict[titleText][1];
+    window.open(url);
+});
+
+viewbox.addEventListener('transitionend', () =>
+{
+    inTransition = false;
+});
+
+title.addEventListener('transitionend', () =>
+{
+    setData();
+    title.style.opacity = 1;
 });
 
 leftArrow.addEventListener('click', () =>
 {
-    if (isInTransition) return;
-    isInTransition = true;
+    if (inTransition) return;
+    inTransition = true;
     --index;
-    setData();
+    index = (index >= 0) ? index : keys.length - 1;
+    const titleText = keys[index % keys.length];
+    const imageUrl = dict[titleText][0];
+    viewbox.style.backgroundImage = `url(${imageUrl})`;
+    title.style.opacity = 0;
 });
 
 rightArrow.addEventListener('click', () =>
 {
-    if (isInTransition) return;
-    isInTransition = true;
+    if (inTransition) return;
+    inTransition = true;
     ++index;
-    setData();
+    index = (index >= 0) ? index : keys.length - 1;
+    const titleText = keys[index % keys.length];
+    const imageUrl = dict[titleText][0];
+    viewbox.style.backgroundImage = `url(${imageUrl})`;
+    title.style.opacity = 0;
 });
 
+
+const titleText = keys[index % keys.length];
+const imageUrl = dict[titleText][0];
+viewbox.style.backgroundImage = `url(${imageUrl})`;
 setData();

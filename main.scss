@@ -2,13 +2,6 @@ $color1: #313133; // dark gray
 $color2: #4B4A4D; // light gray
 $color3: #fcfcfc; // white
 
-
-@keyframes content
-{
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
 *
 {
     margin: 0;
@@ -105,7 +98,7 @@ a
         padding-top: $space;
         padding-bottom: $space;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
 
         #title
         {
@@ -114,7 +107,7 @@ a
             $spacing: .25rem;
             letter-spacing: $spacing;
             text-indent: $spacing;
-            transition: opacity .3s linear;
+            transition: opacity .3s ease-in-out;
         }
 
         #leftarrow, #rightarrow
@@ -137,23 +130,9 @@ a
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        box-shadow: inset 0 0 10px 10px rgba(0, 0, 0, .1);
-        transition: background-image .3s linear;
-
-        &:hover
-        {
-            border: 5px solid red;
-        }
-
-        #overlay
-        {
-            background-color: $color1;
-            width: 100%;
-            height: 100%;
-            opacity: .6;
-            transition: opacity .2s;
-            pointer-events: none;
-        }
+        box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        border-radius: 40px;
+        transition: background-image .6s ease-in-out;
     }
 }
 
